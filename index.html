@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blooming Pink Flower</title>
+  <style>
+    body {
+      height: 100vh;
+      margin: 0;
+      background: linear-gradient(to bottom, #f0e6ff, #e6d9ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .flower {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      transform: scale(1.1);
+    }
+
+    /* Center part (pistil) */
+    .center {
+      position: absolute;
+      width: 70px;
+      height: 70px;
+      background: radial-gradient(circle at 30% 30%, #ffeb3b, #fbc02d 60%, #f57f17);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 
+        inset 0 0 20px #ff9800,
+        0 0 30px #ffca28;
+      z-index: 5;
+    }
+
+    /* Petals */
+    .petal {
+      position: absolute;
+      width: 100px;
+      height: 140px;
+      background: radial-gradient(ellipse at 50% 20%, #ffccdd, #ff99bb 40%, #ff6699 70%, #ff4081);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      top: 50%;
+      left: 50%;
+      transform-origin: 50% 80%;
+      box-shadow: 
+        inset -10px -10px 20px rgba(255, 105, 180, 0.4),
+        0 10px 25px rgba(200, 0, 100, 0.25);
+      transition: all 1.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    /* Closed position (default) */
+    .petal.closed {
+      transform: translate(-50%, -50%) rotate(var(--rot)) scale(0.65) translateY(-30px);
+      opacity: 0.92;
+    }
+
+    /* Open position (on hover) */
+    .flower:hover .petal.closed {
+      transform: translate(-50%, -50%) rotate(var(--rot)) scale(1) translateY(-10px);
+      opacity: 1;
+    }
+
+    /* Stem */
+    .stem {
+      position: absolute;
+      width: 14px;
+      height: 180px;
+      background: linear-gradient(to bottom, #4caf50, #2e7d32);
+      bottom: -140px;
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 7px;
+      z-index: 1;
+      box-shadow: inset 0 0 10px #1b5e20;
+    }
+
+    .stem::before {
+      content: "";
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: #388e3c;
+      border-radius: 50%;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    /* Petal rotations */
+    .p1 { --rot:   0deg; }
+    .p2 { --rot:  45deg; }
+    .p3 { --rot:  90deg; }
+    .p4 { --rot: 135deg; }
+    .p5 { --rot: 180deg; }
+    .p6 { --rot: 225deg; }
+    .p7 { --rot: 270deg; }
+    .p8 { --rot: 315deg; }
+  </style>
+</head>
+<body>
+
+<div class="flower">
+  <div class="center"></div>
+  
+  <div class="petal closed p1"></div>
+  <div class="petal closed p2"></div>
+  <div class="petal closed p3"></div>
+  <div class="petal closed p4"></div>
+  <div class="petal closed p5"></div>
+  <div class="petal closed p6"></div>
+  <div class="petal closed p7"></div>
+  <div class="petal closed p8"></div>
+
+  <div class="stem"></div>
+</div>
+
+</body>
+</html>
